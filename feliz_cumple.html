@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¡Feliz Cumpleaños!</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: #FF69B4;
+      font-family: 'Georgia', serif;
+      overflow-x: hidden;
+    }
+    .rosa-fija {
+      width: 100vw;
+      max-width: 600px;
+      height: 500px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 0;
+      pointer-events: none;
+      display: block;
+    }
+    .rosa-fija img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 0;
+      transition: opacity 2.5s linear;
+      display: block;
+    }
+    .texto-sobre-rosa {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .mensaje {
+      max-width: 600px;
+      width: 90vw;
+      text-align: left;
+      font-size: 1.3em;
+      background: rgba(0,0,0,0.0);
+      color: #fff;
+      text-shadow: 0 0 12px #FF69B4, 0 0 2px #fff;
+      white-space: pre-line;
+      word-break: break-word;
+      line-height: 1.5;
+      border-radius: 12px;
+      margin: 60px 0 0 0;
+      min-height: 0;
+      box-sizing: border-box;
+      pointer-events: none;
+    }
+    .container {
+      width: 100vw;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 1;
+      position: relative;
+    }
+    .album {
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 3;
+      transition: margin-top 0.2s;
+      margin-top: 32px;
+    }
+    .album h2 {
+      color: #FFD700;
+      margin-bottom: 10px;
+      text-shadow: 0 0 8px #FFD700;
+    }
+    .fotos {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .fotos img {
+      max-width: 300px;
+      max-height: 200px;
+      border: 3px solid #FF69B4;
+      border-radius: 10px;
+      box-shadow: 0 0 20px #FF69B4;
+      background: #111;
+      margin-bottom: 10px;
+    }
+    #play-music-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+      background: #FF69B4;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 1em;
+      cursor: pointer;
+      box-shadow: 0 0 10px #FF69B4;
+      transition: background 0.2s;
+    }
+    #play-music-btn:hover {
+      background: #FFD700;
+      color: #FF69B4;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <!-- Botón para reproducir música -->
+  <button id="play-music-btn">Reproducir música</button>
+  <audio id="musica" src="Locked-Out-Of-Heaven.mp3" loop></audio>
+
+  <div class="container">
+    <div class="rosa-fija" id="rosa-fija">
+      <img class="fondo-rosa" id="rosa-img" src="rosa.png" alt="Rosa">
+      <div class="texto-sobre-rosa">
+        <div class="mensaje" id="mensaje"></div>
+      </div>
+    </div>
+    <div class="album" id="album">
+      <h2>Nuestros Recuerdos</h2>
+      <div class="fotos">
+        <img src="imagen1.jpg" alt="Recuerdo 1">
+        <img src="imagen2.jpg" alt="Recuerdo 2">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Botón para reproducir música
+    document.getElementById('play-music-btn').onclick = function() {
+      const audio = document.getElementById('musica');
+      audio.play();
+      this.style.display = 'none';
+    };
+
+    // Efecto de fade-in para la rosa
+    window.onload = function() {
+      setTimeout(() => {
+        document.getElementById('rosa-img').style.opacity = 1;
+      }, 400);
+
+      const MENSAJE = `Carta de cumpleaños para Mariana 💛\n\nQuerida Mariana,\n\nHoy celebramos un día muy especial, tus 21 años, y aunque no pueda entregarte esta carta en físico, no quería dejar pasar la oportunidad de escribirte estas palabras que me nacen del corazón.\n\nDesde aquel primer año en la universidad, cuando nuestros caminos se cruzaron, jamás imaginé todo lo que compartiríamos. Hemos vivido momentos de todos los colores: risas, silencios, enojos, charlas nocturnas, apoyos sinceros y hasta discusiones que, lejos de alejarnos, terminaron fortaleciendo este lazo tan único que tengo contigo.\n\nMe has permitido estar a tu lado en instantes muy difíciles, y también has estado tú para mí cuando más lo necesité. Y eso, Mariana, es algo que valoro profundamente. No todos tienen esa capacidad de dar tanto de sí, aun cuando también están librando sus propias batallas.\n\nAdmiro la fuerza con la que enfrentas tus días, incluso cuando sientes que ya no puedes más. Esa lucha interna que llevas, esa manera tuya de seguir adelante aunque muchas veces creas que no lo lograrás, es algo que me inspira más de lo que imaginas. Ver cómo avanzas, cómo cambias para bien y cómo te superas, me llena de orgullo.\n\nTú, con tu manera especial de ver el mundo, de hacerme enojar y reír en el mismo día, logras que cada instante contigo sea diferente. Me gusta retarte, competir contigo, porque me empujas a ser mejor... aunque no pienso dejarme ganar tan fácil eh?\n\nQuiero que sepas que estoy y estaré siempre para ti, a cualquier hora y en cualquier momento. Así como tú me has regalado sonrisas en días nublados, yo también quiero ser quien te recuerde que, pase lo que pase, no estás sola.\n\nGracias por ser como eres, por ser parte de mi vida y por tener un lugar tan especial en mi corazón. A veces no lo demuestro, lo sé, pero el cariño y el afecto que te tengo es inmenso.\n\nFeliz cumpleaños, Mariana.\nTe deseo una vida llena de momentos que te hagan brillar tanto como tú sabes hacerlo.\nCon mucho cariño,\n\nGiomar`;
+      let i = 0;
+      const rosaHeight = 500;
+      const album = document.getElementById('album');
+      const mensaje = document.getElementById('mensaje');
+      const rosaFija = document.getElementById('rosa-fija');
+      function escribir() {
+        if (i <= MENSAJE.length) {
+          mensaje.innerText = MENSAJE.slice(0, i);
+
+          // Medir la altura real del texto dentro de la rosa
+          const textoRect = mensaje.getBoundingClientRect();
+          const rosaRect = rosaFija.getBoundingClientRect();
+          const textoBottom = textoRect.bottom - rosaRect.top;
+
+          if (textoBottom + 32 > rosaHeight) {
+            album.style.marginTop = (textoBottom + 32 - rosaHeight) + 'px';
+          } else {
+            album.style.marginTop = '32px';
+          }
+
+          i++;
+          setTimeout(escribir, 35);
+        }
+      }
+      setTimeout(escribir, 2500);
+    };
+  </script>
+</body>
+</html> 
